@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Feedback&apos;s" language="groovy" pageWidth="1000" pageHeight="595" orientation="Landscape" columnWidth="960" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7b16d21b-cf66-43ad-9f85-aaa7530178a5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     feedback_tbl.`fid` AS feedback_tbl_fid,
+     feedback_tbl.`sname` AS feedback_tbl_sname,
+     feedback_tbl.`email` AS feedback_tbl_email,
+     feedback_tbl.`contact` AS feedback_tbl_contact,
+     feedback_tbl.`Discription` AS feedback_tbl_Discription,
+     feedback_tbl.`experience` AS feedback_tbl_experience
+FROM
+     `feedback_tbl` feedback_tbl]]>
+	</queryString>
+	<field name="feedback_tbl_fid" class="java.lang.Integer"/>
+	<field name="feedback_tbl_sname" class="java.lang.String"/>
+	<field name="feedback_tbl_email" class="java.lang.String"/>
+	<field name="feedback_tbl_contact" class="java.lang.Long"/>
+	<field name="feedback_tbl_Discription" class="java.lang.String"/>
+	<field name="feedback_tbl_experience" class="java.lang.String"/>
+	<group name="feedback_tbl_fid">
+		<groupExpression><![CDATA[$F{feedback_tbl_fid}]]></groupExpression>
+		<groupHeader>
+			<band height="27">
+				<frame>
+					<reportElement mode="Opaque" x="0" y="3" width="883" height="24" forecolor="#B89F7D" backcolor="#000000" uuid="e9e22248-affc-4953-aea8-85d049d4373e"/>
+					<textField isStretchWithOverflow="true">
+						<reportElement style="SubTitle" x="2" y="0" width="693" height="24" forecolor="#FFFFFF" uuid="295278ad-f7c6-423f-ae5b-ec6cd8f237d9"/>
+						<textElement>
+							<font isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{feedback_tbl_fid}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<rectangle>
+					<reportElement x="883" y="3" width="77" height="24" backcolor="#666666" uuid="5a5aba01-353c-402b-b1db-b97dfb9cbd19"/>
+					<graphicElement>
+						<pen lineWidth="0.0"/>
+					</graphicElement>
+				</rectangle>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<image>
+				<reportElement x="802" y="0" width="180" height="102" uuid="eb9f995b-3e1a-4780-926c-e826013096d4"/>
+				<imageExpression><![CDATA["rep.jpg"]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="66" backcolor="#000000" uuid="a519e980-8458-4c34-9e7b-935cc7524916"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="370" height="66" uuid="d3c094e5-9df3-45a2-ac98-3159e9ef3472"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Mobile Store]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="409" y="37" width="316" height="29" uuid="843f0e59-7b70-454a-98d8-5a4b2305fd41"/>
+					<textElement textAlignment="Center">
+						<font size="22" isBold="false" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Feedback's]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="70" width="802" height="32" forecolor="#000000" backcolor="#CC0000" uuid="f7a44833-1769-4426-919b-17e7d5fef839"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="508" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="4345bda6-e356-4329-b6cf-571e8685ff0b"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="2" y="0" width="159" height="27" forecolor="#000000" uuid="778d3182-9860-4430-ab34-6a3ac2d251ea"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="199" y="0" width="159" height="27" forecolor="#000000" uuid="f26751bc-96f3-49c5-92db-86352de99a9a"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="338" y="0" width="159" height="27" forecolor="#000000" uuid="90f7dd44-75f2-40f7-b3f4-6342fce30bcc"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Contact]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="479" y="0" width="159" height="27" forecolor="#000000" uuid="46605539-14fd-41e8-98da-b7e7424cb9da"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Discription]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="638" y="0" width="159" height="27" forecolor="#000000" uuid="5c50a96e-2a25-4c93-8a83-286bd6cb7d06"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Experience]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="b9bcf5ba-bb1a-48e8-a3e9-3b36f2282e64"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="159" height="18" uuid="6964f387-5a8b-46c1-bc44-680638977cec"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{feedback_tbl_sname}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="159" y="0" width="159" height="18" uuid="9bea6ae6-046b-4aca-87e9-ca6ee5c38589"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{feedback_tbl_email}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="338" y="0" width="159" height="18" uuid="c99e2b74-13f8-4e6d-a9e8-bbb82ad28968"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{feedback_tbl_contact}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="446" y="0" width="159" height="18" uuid="0e7945f2-4fa4-4e23-b404-f539fd5efe0e"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{feedback_tbl_Discription}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="638" y="0" width="159" height="18" uuid="e1f96e7e-b257-464f-8b7c-e56a4d57395c"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{feedback_tbl_experience}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="ca80e813-49d8-46dd-b2f3-26d83c6c10c9"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="25" forecolor="#D0B48E" backcolor="#000000" uuid="fde09774-edcd-4d05-a54e-38e15d974b9d"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="757" y="3" width="40" height="20" forecolor="#FFFFFF" uuid="e94a4de3-596a-4a77-982b-c4eaa388af46"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="677" y="3" width="80" height="20" forecolor="#FFFFFF" uuid="1b145407-8aa9-4d41-b512-f9febb78c9e7"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy" isBlankWhenNull="true">
+					<reportElement style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF" uuid="5e2670bb-b550-4a54-bc10-c6895faab5a3"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

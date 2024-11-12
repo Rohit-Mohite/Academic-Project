@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Debit_payment" language="groovy" pageWidth="978" pageHeight="595" orientation="Landscape" columnWidth="938" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="94bf29ae-b691-4953-96b7-f5fe97f1f669">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     debit_payment_tbl.`debid` AS debit_payment_tbl_debid,
+     debit_payment_tbl.`cardholder_name` AS debit_payment_tbl_cardholder_name,
+     debit_payment_tbl.`exp_date` AS debit_payment_tbl_exp_date,
+     debit_payment_tbl.`cvv` AS debit_payment_tbl_cvv,
+     debit_payment_tbl.`amount` AS debit_payment_tbl_amount
+FROM
+     `debit_payment_tbl` debit_payment_tbl]]>
+	</queryString>
+	<field name="debit_payment_tbl_debid" class="java.lang.Integer"/>
+	<field name="debit_payment_tbl_cardholder_name" class="java.lang.String"/>
+	<field name="debit_payment_tbl_exp_date" class="java.lang.String"/>
+	<field name="debit_payment_tbl_cvv" class="java.lang.String"/>
+	<field name="debit_payment_tbl_amount" class="java.lang.Float"/>
+	<group name="debit_payment_tbl_debid">
+		<groupExpression><![CDATA[$F{debit_payment_tbl_debid}]]></groupExpression>
+		<groupHeader>
+			<band height="27">
+				<frame>
+					<reportElement mode="Opaque" x="0" y="3" width="883" height="24" forecolor="#B89F7D" backcolor="#000000" uuid="80567127-d5d2-46ac-8280-eb6f17067e38"/>
+					<textField isStretchWithOverflow="true">
+						<reportElement style="SubTitle" x="2" y="0" width="695" height="24" forecolor="#FFFFFF" uuid="7877140c-ac9e-4f00-87f5-4f3c0d445adf"/>
+						<textElement>
+							<font isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{debit_payment_tbl_debid}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<rectangle>
+					<reportElement x="883" y="3" width="54" height="24" backcolor="#000000" uuid="6c476262-7314-449d-8fae-48add9daca82"/>
+					<graphicElement>
+						<pen lineWidth="0.0"/>
+					</graphicElement>
+				</rectangle>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<image>
+				<reportElement x="780" y="0" width="180" height="102" uuid="33a348c0-7d9c-4998-af77-259b3aeb26fb"/>
+				<imageExpression><![CDATA["rep.jpg"]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement mode="Opaque" x="4" y="0" width="777" height="66" backcolor="#000000" uuid="27dd4f07-2600-41a7-a28d-fd621c3b6868"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="401" height="66" uuid="ab5690db-6a41-48c8-986d-37d553a91df2"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Mobile Store]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="401" y="37" width="316" height="29" uuid="fefbc709-4e40-40da-a069-6c19023221a3"/>
+					<textElement textAlignment="Center">
+						<font size="22" isBold="false" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Debit card payment]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="4" y="68" width="777" height="34" forecolor="#000000" backcolor="#CC0000" uuid="fc8bec66-ce69-47a5-be5d-bd15ffd4f5d7"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="475" y="14" width="144" height="20" forecolor="#FFFFFF" uuid="4d650144-5be4-41db-a793-55d6d078a9ac"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="199" height="27" forecolor="#000000" uuid="100410e3-c349-4217-bd0f-e5f3390c9d99"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="265" y="0" width="87" height="27" forecolor="#000000" uuid="18cf8cdc-8e0a-4914-bb5e-567574d00f5e"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Exp_date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="457" y="0" width="116" height="27" forecolor="#000000" uuid="dfc1a223-42f7-4739-a61d-4cbb40746c90"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CVV]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="597" y="0" width="199" height="27" forecolor="#000000" uuid="f2fb1166-07e0-466d-94cb-d7ee1c4bf8e4"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="42524f41-7bee-454f-a097-15f448da1358"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="241" height="18" uuid="ca7fc066-df40-46a3-b4af-ca485e6877c3"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{debit_payment_tbl_cardholder_name}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="265" y="0" width="132" height="18" uuid="1c626b8c-7f82-4a02-8e5c-a9a5d4422896"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{debit_payment_tbl_exp_date}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="457" y="0" width="133" height="18" uuid="9c7730fc-338d-4e56-9f8a-375d77ae9016"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{debit_payment_tbl_cvv}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="597" y="0" width="199" height="18" uuid="8fce8500-4efd-462e-b720-4a8e0f83f877"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{debit_payment_tbl_amount}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="e3d44aa5-29bc-413b-a6f8-b437d56d5e8d"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="937" height="25" forecolor="#D0B48E" backcolor="#000000" uuid="e397c7bb-fd11-487b-a00f-a2408ea350b2"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="897" y="3" width="40" height="20" forecolor="#FFFFFF" uuid="0eb39ab4-728f-4743-9f6e-3be6d684c999"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="817" y="3" width="80" height="20" forecolor="#FFFFFF" uuid="fd26f290-6efe-4930-8fb0-0484c184c721"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy" isBlankWhenNull="true">
+					<reportElement style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF" uuid="9c1de91c-b775-446b-86c4-85e8e524f41a"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
